@@ -269,44 +269,6 @@ def get_posts_with_comments(
     result["success"] = True
     return result
 
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Tests
-# ─────────────────────────────────────────────────────────────────────────────
-
-def run_tests(session_id: str = SESSION_ID):
-    sep = "─" * 60
-    print(f"\n{sep}")
-    print("TESTS DE DIAGNÓSTICO")
-    print(sep)
-
-    session = _bootstrap_session(session_id)
-
-    csrf = session.cookies.get("csrftoken", "")
-    if csrf:
-        print(f"\n[T1] ✓ CSRF token: {csrf[:12]}…")
-    else:
-        print("\n[T1] ⚠ CSRF token no obtenido")
-
-    test_user = "instagram"
-    print(f"\n[T2] Detalles de @{test_user}…")
-    user = get_user_details(test_user, session)
-    if user and user.get("user_id"):
-        print(f"       ✓ @{user['username']}  ID={user['user_id']}")
-    else:
-        print("       ✗ Fallo")
-        return
-
-    print(f"\n[T3] Posts de @{test_user} (limit=2)…")
-    posts = get_user_posts(test_user, session, limit=2)
-
-    print(f"\n[T4] Comentarios del primer post…")
-    first = posts[0]
-    cd = get_post_comments(first["media_id"], first["code"], session, limit=3)
-
-    print(f"\n{sep}\nTests completados.\n{sep}\n")
-
-
 # ─────────────────────────────────────────────────────────────────────────────
 # CLI
 # ─────────────────────────────────────────────────────────────────────────────
@@ -343,7 +305,4 @@ def main():
 
 
 if __name__ == "__main__":
-    if "--test" in sys.argv:
-        run_tests()
-    else:
-        main()
+    main()
