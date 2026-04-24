@@ -1,0 +1,17 @@
+ # Python
+  _pycache_/
+  *.pyc
+  .venv/
+  venv/
+
+  # Credenciales
+  .env
+
+  # Salidas del scraper
+  *_data.json
+
+  # Node
+  node_modules/
+
+  # Vite build
+  dist/

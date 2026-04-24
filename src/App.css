@@ -1,0 +1,221 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --border: #dbdbdb;
+    --primary: #0095f6;
+    --text: #262626;
+    --text-2: #8e8e8e;
+    --error: #ed4956;
+    --radius: 12px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.5;
+  }
+
+  /* ── Header ── */
+  .app-header {
+    background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+    padding: 2.5rem 1rem 2rem;
+    text-align: center;
+  }
+  .app-title {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+  .app-subtitle {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+    margin: 0.25rem 0 1.5rem;
+  }
+
+  /* ── Search Form ── */
+  .search-form {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .search-input {
+    flex: 1;
+    min-width: 180px;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    background: rgba(255,255,255,0.96);
+    color: var(--text);
+  }
+  .search-input::placeholder { color: #aaa; }
+  .search-input-small { flex: none; width: 72px; text-align: center; }
+  .search-btn {
+    padding: 0.7rem 1.4rem;
+    background: #fff;
+    color: #833ab4;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .search-btn:hover:not(:disabled) { opacity: 0.85; }
+  .search-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* ── Main ── */
+  .app-main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  /* ── Loading ── */
+  .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem;
+    color: var(--text-2);
+    font-size: 0.9rem;
+  }
+  .spinner {
+    width: 38px; height: 38px;
+    border: 3px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── Error ── */
+  .error-box {
+    background: #fff5f5;
+    border: 1px solid #fecaca;
+    color: var(--error);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+  }
+
+  /* ── Profile Card ── */
+  .profile-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+  }
+  .profile-avatar-wrap { flex-shrink: 0; }
+  .profile-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    display: block;
+  }
+  .profile-avatar-placeholder {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #833ab4, #fd1d1d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  .profile-info { flex: 1; min-width: 0; }
+  .profile-username { font-size: 1.2rem; font-weight: 700; }
+  .profile-fullname { font-size: 0.875rem; color: var(--text-2); margin-top: 2px; }
+  .profile-bio { font-size: 0.875rem; margin-top: 0.5rem; white-space: pre-wrap; }
+  .profile-stats {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .stat { display: flex; flex-direction: column; align-items: center; }
+  .stat-value { font-size: 1rem; font-weight: 700; }
+  .stat-label { font-size: 0.7rem; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.4px; }
+  .stat-highlight .stat-value { color: var(--primary); }
+
+  /* ── Section ── */
+  .posts-section { margin-top: 0.5rem; }
+  .section-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .count-badge {
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 20px;
+  }
+
+  /* ── Post Card ── */
+  .posts-list { display: flex; flex-direction: column; gap: 0.875rem; }
+  .post-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+  }
+  .post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.6rem;
+  }
+  .post-number { font-size: 0.8rem; font-weight: 700; color: var(--text-2); }
+  .post-link {
+    font-size: 0.8rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .post-link:hover { text-decoration: underline; }
+  .post-meta { font-size: 0.8rem; color: var(--text-2); margin-bottom: 0.75rem; }
+  .post-error { font-size: 0.85rem; color: var(--text-2); font-style: italic; }
+
+  /* ── Comments ── */
+  .comments-list { display: flex; flex-direction: column; gap: 0.5rem; list-style: none; }
+  .comment {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  .comment-author { font-weight: 700; margin-right: 0.35rem; }
+  .comment-footer { display: flex; gap: 1rem; margin-top: 0.25rem; }
+  .comment-likes { font-size: 0.72rem; color: var(--text-2); }
+
+  /* ── Responsive ── */
+  @media (max-width: 500px) {
+    .profile-card { flex-direction: column; align-items: center; text-align: center; }
+    .profile-stats { justify-content: center; }
+  }

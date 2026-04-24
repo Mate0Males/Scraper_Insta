@@ -1,0 +1,4 @@
+requests
+fake-useragent
+flask
+flask-cors
